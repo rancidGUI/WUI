@@ -1,0 +1,58 @@
+<md-dialog aria-label="Machine">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add Cron</h2>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>Type</label>
+                    <input ng-model="cron.Type">
+                </md-input-container>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>Name</label>
+                    <input ng-model="cron.Name">
+                </md-input-container>
+<!--                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>Delay</label>
+                    <input ng-model="cron.Delay">
+                </md-input-container>-->
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>MIN</label>
+                    <input ng-model="cron.MIN">
+                </md-input-container>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>HOUR</label>
+                    <input ng-model="cron.HOUR">
+                </md-input-container>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>DAY</label>
+                    <input ng-model="cron.DAY">
+                </md-input-container>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>MONTH</label>
+                    <input ng-model="cron.MONTH">
+                </md-input-container>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>DOWEEK</label>
+                    <input ng-model="cron.DOWEEK">
+                </md-input-container>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>Comments</label>
+                    <input ng-model="cron.Comments">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button class="md-warn" ng-click="cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="addCron()">
+                Add
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

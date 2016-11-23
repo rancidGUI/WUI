@@ -1,0 +1,21 @@
+<md-subheader>
+    <md-button class="md-raised" ng-click="openAddCron($event)">Add Cron</md-button>
+</md-subheader>
+<md-content class="md-padding">
+    <div ng-repeat="cron in rancidrunApi.data.crons">
+        <md-card md-theme="" md-theme-watch="">
+            <md-card-content>
+                <div>Command : {{cron.Commands}}</div>
+                <div>Comments : {{cron.Comments}}</div>
+                <div>DAY : {{cron.DAY}}</div>
+                <div>DOWEEK : {{cron.DOWEEK}}</div>
+                <div>HOUR : {{cron.HOUR}}</div>
+                <div>MIN : {{cron.MIN}}</div>
+                <div>MONTH : {{cron.MONTH}}</div>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="center center">
+	     <md-button class="md-warn" ng-click="deleteSelectedCron(cron)">Delete</md-button>
+			</md-card-actions>
+        </md-card>
+    </div>
+</md-content>

@@ -1,0 +1,37 @@
+<md-dialog aria-label="Edit Machine">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Edit Machine</h2>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>Type</label>
+                    <input ng-model="machine.type">
+                </md-input-container>
+                <md-input-container class="md-block" md-theme="customInputs">
+                    <label>Status</label>
+                    <md-select ng-model="machine.status">
+                        <md-option value="up">
+                            Up
+                        </md-option>
+                        <md-option value="down">
+                            Down
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button class="md-warn" ng-click="cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="editMachine()">
+                Add
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

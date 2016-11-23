@@ -1,0 +1,49 @@
+<md-toolbar class="">
+	<div class="md-toolbar-tools">
+		<!--<h2 class="md-flex">Toolbar: md-warn</h2>-->
+		<h2>Group list : all groups containing in your network</h2>
+		<span flex></span>
+		<md-button class="md-raised md-warn" aria-label="Advanced creation" ng-click="goToAdvancedCreation()">
+			Advanced creation
+		</md-button>
+		<md-button class="md-raised" aria-label="goToLogs" ng-click="goToLogs()">
+			Logs
+		</md-button>
+		<md-button class="md-raised" aria-label="Add group" ng-click="addGroup()">
+			Create group
+		</md-button>
+		<md-button class="md-raised" aria-label="get groups" ng-click="groupsApi.getGroups()">
+			Refresh
+		</md-button>
+	</div>
+</md-toolbar>
+<md-content class="md-padding">
+	<div layout="row" layout-wrap>
+		<!--<div layout-xs="column" layout="row">-->
+		<div ng-repeat="group in groupsApi.data.groups" flex="25">
+			<md-card md-theme="" md-theme-watch="">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{group.group_name}}</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<div>Down : {{group.down}}</div>
+					<div>Total : {{group.total}}</div>
+					<div>Up : {{group.up}}</div>
+				</md-card-content>
+				<md-card-actions layout="row" layout-align="center center">
+					<!--<md-button ng-click="goToGroup(group.group_name)">Show</md-button>-->
+					<md-button class="md-icon-button" aria-label="More" ng-click="goToGroup(group.group_name)">
+						<md-icon md-svg-icon="/images/ic_more_horiz.svg"></md-icon>
+					</md-button>
+					<md-button class="md-icon-button md-warn" aria-label="More" ng-click="deleteGroup($event, group.group_name)">
+						<md-icon md-svg-icon="/images/ic_delete.svg"></md-icon>
+					</md-button>
+					<!--<md-button ng-click="goToGroup(group.group_name)">Show</md-button>-->
+					<!--<md-button class="md-warn" ng-click="deleteGroup($event, group.group_name)">Delete</md-button>-->
+				</md-card-actions>
+			</md-card>
+		</div>
+	</div>
+</md-content>

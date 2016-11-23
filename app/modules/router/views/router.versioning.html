@@ -1,0 +1,68 @@
+<md-subheader>
+	<md-menu>
+		<md-button class="md-raised" ng-click="openMenu($mdOpenMenu, $event)">Filter</md-button>
+		<md-menu-content width="4">
+			<md-menu-item>
+				<md-button ng-click="getAllVersions($event)">
+					All Versions
+				</md-button>
+			</md-menu-item>
+			<md-menu-item>
+				<md-button ng-click="getlastFiveVersions($event)">
+					Last 5 versions
+				</md-button>
+			</md-menu-item>
+			<md-menu-divider></md-menu-divider>
+			<md-menu-item>
+				<md-button ng-click="toggleDiff()">
+					{{data.isEnableDiffMode ? 'Disable' : 'Enable' }} diff mode
+				</md-button>
+			</md-menu-item>
+		</md-menu-content>
+	</md-menu>
+	<span>{{data.currentFilter}}</span>
+	<div ng-if="data.isEnableDiffMode">
+		<md-button class="md-raised" ng-click="getDiffBetweenSelectedVersions($event)" ng-disabled="!shouldDisableCheckbox()">
+			MAKE DIFF
+		</md-button>
+		<ion-spinner>Diff mode is activated, please select 2 versions</span>
+	</div>
+</md-subheader>
+<md-content class="md-padding">
+	<div ng-if="versioningApi.data.diff !== undefined">
+		<md-button class="md-raised" ng-click="versioningApi.clearDiff()">
+			CLEAR DIFF
+		</md-button>
+		<md-card md-theme="" md-theme-watch="">
+			
+			<md-card-content>
+                <div><h2>Diff between {{generateDiffParam()}}</h2></div>
+				<div ng-repeat="d in versioningApi.data.diff track by $index">{{d}}</div>
+			</md-card-content>
+		</md-card>
+	</div>
+	<div ng-repeat="version in versioningApi.data.versions">
+		<md-card md-theme="" md-theme-watch="">
+			<md-card-content>
+				<div layout="row">
+					<div layout="column" flex>
+						<div>Comment : {{version.Comment}}</div>
+						<div>Version : {{version.Version}}</div>
+						<div ng-if="version.detailVersion">Detail :
+							<div ng-repeat="d in version.detailVersion track by $index">{{d}}</div>
+						</div>
+					</div>
+					<div layout="column" flex-20>
+						<md-checkbox aria-label="checkbox" ng-disabled="shouldDisableCheckbox() && selected[version.Version] !== true" ng-if="data.isEnableDiffMode"
+							ng-checked="selected[version.Version]" ng-click="toggleCheckbox(version)">
+						</md-checkbox>
+					</div>
+				</div>
+			</md-card-content>
+			<md-card-actions layout="row" layout-align="center center">
+				<md-button ng-if="!version.detailVersion" class="" ng-click="getDetailForVersion(version)">Detail</md-button>
+				<md-button ng-if="version.detailVersion" class="md-warn" ng-click="clearDetailForVersion(version)">Clear</md-button>
+			</md-card-actions>
+		</md-card>
+	</div>
+</md-content>

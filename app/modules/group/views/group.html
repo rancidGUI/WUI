@@ -1,0 +1,46 @@
+<md-toolbar class="">
+	<div class="md-toolbar-tools">
+		<!--<h2 class="md-flex">Toolbar: md-warn</h2>-->
+		<h2>Group name : {{groupName}}</h2>
+		<span flex></span>
+		<md-button class="md-raised" aria-label="Add machine" ng-click="newMachineModal()">
+			Add machine
+		</md-button>
+		<md-button class="md-raised" aria-label="Add machine" ng-click="routerApi.getRouters(groupName)">
+			Refresh
+		</md-button>
+	</div>
+</md-toolbar>
+<md-content class="md-padding">
+	<div layout="row" layout-wrap>
+		<div ng-repeat="router in routerApi.data.machines" flex="25">
+			<md-card md-theme="{{ router.State === 'up' ? 'dark-green' : 'dark-red' }}" md-theme-watch="">
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">{{router.Name}}</span>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<div>State : {{router.State}}</div>
+					<div>Type : {{router.Type}}</div>
+					<!--<div>Up : {{router.up}}</div>-->
+				</md-card-content>
+				<md-card-actions layout="row" layout-align="center center">
+					<md-button class="md-icon-button" aria-label="More" ng-click="goToRouter(router.Name)">
+						<md-icon md-svg-icon="/images/ic_more_horiz.svg"></md-icon>
+					</md-button>
+					<!--<md-button ng-click="goToRouter(router.Name)">Show</md-button>-->
+					<!--<md-button ng-click="openEditModal($event, router)">Edit</md-button>-->
+					<md-button ng-click="saveNowCronJob(router.Name)">Save</md-button>
+          			<md-button class="md-icon-button" aria-label="More" ng-click="openEditModal($event, router)">
+						<md-icon md-svg-icon="/images/ic_mode_edit.svg"></md-icon>
+					</md-button>
+					<!--<md-button class="md-warn" ng-click="deleteMachine(router.Name)">Delete</md-button>-->
+					<md-button class="md-icon-button md-warn" aria-label="More" ng-click="deleteMachine(router.Name)">
+						<md-icon md-svg-icon="/images/ic_delete.svg"></md-icon>
+					</md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</div>
+</md-content>

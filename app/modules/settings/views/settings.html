@@ -1,0 +1,29 @@
+<md-content class="md-padding">
+	<div>
+		<div>
+			<md-card md-theme="" md-theme-watch="">
+				<md-card-content>
+					<div>
+						<h1>Settings</h1>
+					</div>
+					<div ng-repeat="(key, value) in data.settings" layout="row">
+						<div ng-if="!data.isEnableEditMode" layout="column" flex-20>
+							<span>{{key}} :</span>
+						</div>
+						<div layout="column" flex>
+							<span ng-if="!data.isEnableEditMode">{{value}}</span>
+							<md-input-container ng-if="data.isEnableEditMode" md-theme="customInputs">
+								<label>{{key}}</label>
+								<input ng-model="data.settings[key]" type="text">
+							</md-input-container>
+						</div>
+					</div>
+				</md-card-content>
+				<md-card-actions layout="row" layout-align="center center">
+					<md-button class="md-warn" ng-if="data.isEnableEditMode" ng-click="toggleEditMode(true)"> Cancel </md-button>
+					<md-button ng-click="toggleEditMode()">{{data.isEnableEditMode ? 'Save' : 'Edit' }} </md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</div>
+</md-content>

@@ -1,0 +1,39 @@
+<md-dialog aria-label="Directive">
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Add Directive</h2>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content>
+			<div>
+				<md-input-container class="md-block" md-theme="customInputs">
+					<label>Command</label>
+					<!--<input ng-model="directive.Command">-->
+					<md-select ng-model="directive.command">
+						<md-option ng-repeat="command in commands" ng-value="command">
+							{{command}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container class="md-block" md-theme="customInputs">
+					<label>Attribut</label>
+					<input ng-model="directive.attributs">
+				</md-input-container>
+				<md-input-container class="md-block" md-theme="customInputs">
+					<label>Comment</label>
+					<input ng-model="directive.comment">
+				</md-input-container>
+			</div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button class="md-warn" ng-click="cancel()">
+				Cancel
+			</md-button>
+			<md-button ng-click="addDirective()">
+				Add
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

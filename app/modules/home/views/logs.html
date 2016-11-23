@@ -1,0 +1,13 @@
+<md-content class="md-padding">
+  <div>
+    <div ng-repeat="log in logsApi.data.logs">
+      <md-card md-theme="" md-theme-watch="">
+        <md-card-content>
+          <div>Group : {{log.group}}</div>
+          <div>Error : {{log.error}}</div>
+          <div>Time : {{log.time}}</div>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</md-content>

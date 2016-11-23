@@ -1,0 +1,23 @@
+<md-subheader>
+	<md-button class="md-raised" ng-click="openAddDirectiveModal()">Add directive</md-button>
+	<md-button class="md-raised" ng-click="deleteDirective()">Delete directive</md-button>
+</md-subheader>
+<md-content class="md-padding">
+	<div ng-repeat="directive in cloginrcApi.data.directives">
+		<md-card md-theme="" md-theme-watch="">
+			<md-card-content>
+				<div>Command : {{directive.Command}}</div>
+				<div>Attributs : {{directive.Attributs}}</div>
+				<div>
+					<span ng-if="directive.Comments != '' && directive.Comments != undefined && directive.Comments != null"> Comment : {{directive.Comments}}</span>
+				</div>
+			</md-card-content>
+			<md-card-actions layout="row" layout-align="center center">
+				<md-button class="md-icon-button md-warn" aria-label="More" ng-click="deleteSelectedDirective(directive)">
+					<md-icon md-svg-icon="/images/ic_delete.svg"></md-icon>
+				</md-button>
+				<!--<md-button class="md-warn" ng-click="deleteSelectedDirective(directive)">Delete</md-button>-->
+			</md-card-actions>
+		</md-card>
+	</div>
+</md-content>

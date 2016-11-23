@@ -1,0 +1,66 @@
+<md-toolbar class="">
+	<div class="md-toolbar-tools">
+		<md-button class="md-raised" aria-label="Add group" ng-click="addGroup()">
+			Add group
+		</md-button>
+		<md-button class="md-raised" aria-label="Add group" ng-click="generateAll()">
+			Generate all
+		</md-button>
+	</div>
+</md-toolbar>
+<md-content class="md-padding">
+	<div ng-repeat="group in data.groups">
+		<md-card md-theme="" md-theme-watch="">
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Group</span>
+				</md-card-title-text>
+			</md-card-title>
+			<md-card-content>
+				<md-input-container class="md-block" md-theme="customInputs">
+					<label>Group Name</label>
+					<input ng-model="group.name">
+				</md-input-container>
+				<div ng-repeat="machine in group.machines">
+					<md-card md-theme="light-grey" md-theme-watch="">
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">New machine</span>
+							</md-card-title-text>
+						</md-card-title>
+						<md-card-content>
+							<div>
+								<md-input-container class="md-block">
+									<label>Ip</label>
+									<input ng-model="machine.ip">
+								</md-input-container>
+								<md-input-container class="md-block">
+									<label>Type</label>
+									<input ng-model="machine.type">
+								</md-input-container>
+								<md-input-container class="md-block">
+									<label>Status</label>
+									<md-select ng-model="machine.status">
+										<md-option value="up">
+											Up
+										</md-option>
+										<md-option value="down">
+											Down
+										</md-option>
+									</md-select>
+								</md-input-container>
+							</div>
+						</md-card-content>
+						<md-card-actions layout="row" layout-align="center center">
+							<md-button class="md-warn" ng-click="deleteMachine(group, machine)">Delete</md-button>
+						</md-card-actions>
+					</md-card>
+				</div>
+			</md-card-content>
+			<md-card-actions layout="row" layout-align="center center">
+                <md-button class="md-warn" ng-click="deleteGroup(group)">Delete</md-button>
+				<md-button ng-click="addMachine(group)">Add Machine</md-button>
+			</md-card-actions>
+		</md-card>
+	</div>
+</md-content>

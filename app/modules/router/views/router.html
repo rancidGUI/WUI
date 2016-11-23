@@ -1,0 +1,21 @@
+<div ng-cloak>
+  <md-toolbar class="">
+  <div class="md-toolbar-tools">
+    <!--<h2 class="md-flex">Toolbar: md-warn</h2>-->
+    <h2>Machine name : {{routerName}}</h2>
+  </div>
+</md-toolbar>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Directives">
+        <router-directives></router-directives>
+      </md-tab>
+      <md-tab label="Cron">
+        <router-crons></router-crons>
+      </md-tab>
+      <md-tab label="Versioning">
+        <router-versioning></router-versioning>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
